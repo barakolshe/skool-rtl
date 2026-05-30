@@ -1,42 +1,51 @@
 # Skool RTL — Chrome Extension
 
-מתקן את התצוגה של טקסט בעברית/ערבית ב-Skool כך שיופיע מימין לשמאל (RTL),
-במקום להיצמד לשמאל. עובד אוטומטית על כל עמוד ב-skool.com.
+Fixes the display of Hebrew/Arabic text on Skool so it reads right-to-left (RTL)
+instead of being stuck left-aligned. Works automatically on every page of
+skool.com.
 
-## ⚠️ מגבלה חשובה
+## ⚠️ Important limitation
 
-התוסף רץ **רק בדפדפן שמותקן עליו**. כלומר:
+The extension only runs **in the browser it's installed on**:
 
-- ✅ **אצלך** — הטקסט בעברית יופיע מיושר לימין: גם בצפייה (תיאורים, פוסטים,
-  תגובות) וגם בעריכה (עורך הפוסטים, תיאור ה-About, שדה הכותרת).
-- ❌ **אצל המבקרים/חברי הקהילה** — הם עדיין יראו יישור לשמאל, אלא אם הם
-  מתקינים את אותו תוסף בעצמם.
+- ✅ **For you** — Hebrew text is right-aligned, both when reading
+  (descriptions, posts, comments) and when writing (the post editor, the About
+  editor, the title field).
+- ❌ **For your visitors / community members** — they still see left-aligned
+  text, unless they install the same extension themselves.
 
-מתאים מצוין לכתיבה וניהול נוח של הקורס. לא פותר את התצוגה הציבורית.
+Great for comfortably writing and managing your content. It does **not** fix
+the public-facing display for people who don't have the extension.
 
-## איך מתקינים
+## Installation
 
-1. פותחים ב-Chrome את הכתובת: `chrome://extensions`
-2. מדליקים למעלה מימין את **Developer mode** (מצב מפתח).
-3. לוחצים **Load unpacked** (טעינת תוסף לא ארוז).
-4. בוחרים את התיקייה הזו (`skool-rtl-extension`).
-5. נכנסים ל-skool.com — הטקסט בעברית כבר אמור להופיע מימין לשמאל.
-   (אם עמוד היה פתוח מקודם, צריך לרענן אותו פעם אחת.)
+1. Open `chrome://extensions` in Chrome.
+2. Turn on **Developer mode** (top-right toggle).
+3. Click **Load unpacked**.
+4. Select this folder (`skool-rtl-extension`).
+5. Go to skool.com — Hebrew text should now display right-to-left.
+   (If a page was already open, reload it once.)
 
-## איך זה עובד
+## How it works
 
-שני מנגנונים, שניהם דרך גיליון סגנונות (CSS) משלנו — כי עורכי הטקסט של Skool
-"מנקים" attributes שמוסיפים מבחוץ, אבל לא יכולים לנקות כלל CSS:
+Two mechanisms, both delivered through our own stylesheet (CSS) — because
+Skool's text editors strip foreign attributes you add from outside, but they
+can't strip a CSS rule:
 
-1. **טקסט לקריאה** (תיאורים, פוסטים, תגובות): סקריפט מזהה אלמנטים עם עברית/ערבית
-   ומוסיף `dir="auto"`, והדפדפן קובע לבד כיוון ויישור לפי התוכן.
-2. **עורכי טקסט ושדות קלט** (עורך פוסטים, תיאור About, כותרת): כלל
-   `unicode-bidi: plaintext` גורם לכל פסקה לאמץ את הכיוון לפי האות החזקה
-   הראשונה שלה — עברית ל-RTL, אנגלית ל-LTR — אוטומטית.
+1. **Read-only text** (descriptions, posts, comments): a script detects elements
+   containing Hebrew/Arabic and adds `dir="auto"`, letting the browser choose
+   direction and alignment from the content.
+2. **Editors and input fields** (post editor, About description, title): a
+   `unicode-bidi: plaintext` rule makes each paragraph adopt its direction from
+   its own first strong character — Hebrew → RTL, English → LTR — automatically.
 
-כך ממשק האתר באנגלית לא נשבר. `MutationObserver` דואג שגם תוכן שנטען דינמית
-(וגם טקסט שאתה מקליד) יטופל.
+This keeps the English UI from breaking. A `MutationObserver` ensures
+dynamically loaded content (and text you type) is handled too.
 
-## הסרה
+## Removal
 
-נכנסים ל-`chrome://extensions` ולוחצים **Remove** על "Skool RTL".
+Go to `chrome://extensions` and click **Remove** on "Skool RTL".
+
+## License
+
+MIT — see [LICENSE](LICENSE).
