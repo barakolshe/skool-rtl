@@ -1,4 +1,4 @@
-# Skool RTL — Chrome Extension
+# RTL for Skool — Chrome Extension
 
 Fixes the display of Hebrew/Arabic text on Skool so it reads right-to-left (RTL)
 instead of being stuck left-aligned. Works automatically on every page of
@@ -44,7 +44,7 @@ dynamically loaded content (and text you type) is handled too.
 
 ## Removal
 
-Go to `chrome://extensions` and click **Remove** on "Skool RTL".
+Go to `chrome://extensions` and click **Remove** on "RTL for Skool".
 
 ## License
 

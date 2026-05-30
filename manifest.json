@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Skool RTL",
+  "name": "RTL for Skool",
   "version": "1.0.0",
   "description": "Enables right-to-left (RTL) display for Hebrew/Arabic text on Skool.",
   "icons": {
@@ -9,7 +9,7 @@
     "128": "icon128.png"
   },
   "action": {
-    "default_title": "Skool RTL",
+    "default_title": "RTL for Skool",
     "default_icon": {
       "16": "icon16.png",
       "48": "icon48.png",
