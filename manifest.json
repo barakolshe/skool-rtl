@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Skool RTL",
+  "version": "1.0.0",
+  "description": "Enables right-to-left (RTL) display for Hebrew/Arabic text on Skool.",
+  "content_scripts": [
+    {
+      "matches": ["https://www.skool.com/*", "https://skool.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
